@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class = "container">
+        <a class="navbar-brand" href="#">StoRest</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <% if(locals.UserID){%>
+                <li class="nav-item">
+                    <a class="nav-link" href="/store">Your Stores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Image" role="button" aria-haspopup="true" aria-expanded="false">
+                        Add an Image
+                    </a>
+                </li>
+                <%}%>
+            </ul>
+                <span class="navbar-right">
+                <a class="btn btn-social-icon btn-github" href="https://github.com/Souldiv">
+                    <span class="fa fa-github fa-lg"></span>
+                </a>
+                </span>
+                <%if(!locals.UserID){%>
+                <a class="navbar-right btn btn-outline-primary" href="/auth/login">Login</a>
+                <a class="navbar-right btn btn-outline-primary" style="margin: 4px" href="/signup">Signup</a>
+                <!--<a class="navbar-right btn btn-outline-primary" href="/auth/google"><i class="fa fa-google-plus" aria-hidden="true"></i></a>-->
+            <%} else{%>
+            <a class="navbar-right btn btn-outline-primary" href="/auth/logout">Logout</a>
+            <%}%>
+        </div>
+    </div>
+</nav>

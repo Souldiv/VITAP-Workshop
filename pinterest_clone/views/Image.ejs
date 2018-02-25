@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Hello, world!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/sb-admin.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style type="text/css">
+        body{
+            background: #CCCCCC;
+            color:white;
+        }
+        .error{
+            color: orangered;
+        }
+        .card{
+            margin: 10px 0px 10px 0px;
+        }
+        .view{
+            margin:auto;
+            /*background: #00B7FF;*/
+        }
+        .imgs{
+            height:500px;
+            width:100%;
+
+        }
+        .black-text{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<% include navbar.ejs %>
+<% if(locals.FlashMessage){%>
+<div class="alert alert-success">
+    <%= locals.FlashMessage%>
+</div>
+<%}%>
+
+<div class="container">
+    <h1 class="black-text">Welcome <%= user.username%>!</h1>
+    <h2 class="black-text"> You can upload your images here.</h2>
+    <div class="card card-register mx-auto mt-5 bg-dark">
+        <div class="card-header">Upload an Image!</div>
+        <div class="view">
+
+        </div>
+        <div class="card-body">
+            <form class="was-validated" method="post" id="Image_upload">
+                <div class="form-group">
+                    <label for="link">Enter the Link of the Image</label>
+                    <input name="link" class="form-control" id="link" type="text" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="desc">Image Description</label>
+                    <input name="desc" class="form-control" id="desc" type="text" placeholder="Cool Picture!" required>
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Upload">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $().ready(function() {
+        // Initialize form validation on the registration form.
+        // It has the name attribute "registration"
+        $("#Image_upload").validate({
+            errorClass: "error",
+            // Specify validation rules
+            rules: {
+                // The key name on the left side is the name attribute
+                // of an input field. Validation rules are defined
+                // on the right side
+                link: {
+                    required: true,
+                    url: true
+                },
+                desc: "required"
+            },
+            // Specify validation error messages
+            messages: {
+                link: {
+                    required: "Please Enter the link!",
+                    url:"Enter a Valid url."
+                },
+                desc: "A small description of your image?"
+            },
+            // Make sure the form is submitted to the destination defined
+            // in the "action" attribute of the form when valid
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#link').change(function(){
+        var a = $(this).val();
+        var new_img = '<img class="imgs" src='+a+'>';
+        $('.view').html(new_img);
+    });
+</script>
+</body>
+</html>

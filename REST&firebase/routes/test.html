@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="meme" alt="meme" style="position: absolute;left:50%;transform: translateX(-50%);">
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-firestore.js"></script>
+<script>
+  var config = {
+    apiKey: "YOUR API KEY",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
+  };
+  firebase.initializeApp(config);
+  var loading=document.getElementById('loading');
+  // Initialize Cloud Firestore through Firebase
+  var db = firebase.firestore();
+
+  db.collection("image").doc("bVY5ddNTlMYT7eda03ow")
+    .onSnapshot(function(doc) {
+      console.log("Current data: ", doc.data());
+      var img = doc.data()['image'];
+      var meme=document.getElementById('meme');
+      meme.src=img;
+    });
+</script>
+</body>
+</html>

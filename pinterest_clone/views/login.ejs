@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <style type="text/css">
+        body{
+            background: #CCCCCC;
+        }
+    </style>
+</head>
+<body>
+<% include navbar.ejs %>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center vcenter">
+            <div class="bar rounded bg-dark">
+                <div class="mx-auto centerize">
+                    <h2>Login</h2>
+                </div>
+                <br>
+                <div class="inner">
+                    <form class="was-validated" method="post" action="/auth/login">
+                        <div class="form-group row">
+                            <label for="hell" class="control-label col-4 form-inline"><strong>Username:</strong></label>
+                            <input class="form-control col-6 form-control-sm is-invalid" name="user" id="hell" placeholder="E.g. John doe" required>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pass" class="control-label col-4"><strong>Password:</strong></label>
+                            <input type="password" class="form-control col-6 form-control-sm" name="pass" id="pass" placeholder="Password" required>
+                        </div>
+                        <div class="mx-auto">
+                            <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                        </div>
+                    </form>
+                    <a class="d-block small mt-3 carp" href="/signup">Register an Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
